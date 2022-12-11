@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.*
@@ -54,16 +51,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    val coroutineScope = rememberCoroutineScope()
+    rememberCoroutineScope()
     val scrollState = rememberScrollState()
-    var scrollToPosition by remember { mutableStateOf(0F) }
 
     val imageUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20210101144014/gfglogo.png"
     val title = "Argentina: Messi’s last dance reaches the semis"
     val description =
         "The Qatar World Cup has entered its final stretch as only four out of the 32 teams remain in the hunt to win the biggest prize in international football. Two out of the four names – Argentina and France"
-
-
 
     Column(
         modifier = Modifier
@@ -185,7 +179,7 @@ private fun TextInputField() {
     var text by remember { mutableStateOf("") }
     val brush = remember {
         Brush.linearGradient(
-            colors = listOf(Color.Green, Color.Red, Color.Yellow, Color.Black)
+            colors = listOf(Color.Green, Color.Red, Color.Yellow, Black)
         )
     }
 
@@ -233,8 +227,9 @@ fun ButtonView() {
             top = 12.dp,
             end = 20.dp,
             bottom = 12.dp
-        )
-    ) {
+        ),
+
+        ) {
         // Inner content including an icon and a text label
         Icon(
             Icons.Filled.Favorite,
@@ -315,33 +310,5 @@ fun CardView(
     }
 }
 
-@Composable
-fun TwoTexts(
-    text1: String,
-    text2: String,
-    modifier: Modifier = Modifier
-) {
-    Row(modifier = modifier.height(IntrinsicSize.Min)) {
-        Text(
-            modifier = Modifier
-                .weight(1f)
-                .padding(start = 4.dp)
-                .wrapContentWidth(Alignment.Start),
-            text = text1
-        )
-        Divider(
-            color = Color.Black,
-            modifier = Modifier
-                .fillMaxHeight()
-                .width(1.dp)
-        )
-        Text(
-            modifier = Modifier
-                .weight(1f)
-                .padding(end = 4.dp)
-                .wrapContentWidth(Alignment.End),
-            text = text2
-        )
-    }
-}
+
 
