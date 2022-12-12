@@ -23,10 +23,10 @@ android {
     }
 
     buildTypes {
-//        release {
-//            minifyEnabled = false
-//            proguardFiles = getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-//        }
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -52,48 +52,47 @@ android {
 }
 
 dependencies {
-    val  compose_version = "1.3.2"
-    implementation ("androidx.core:core-ktx:1.9.0")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation ("androidx.activity:activity-compose:1.6.1")
-    implementation ("androidx.compose.ui:ui:$compose_version")
-    implementation ("androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation ("androidx.compose.material3:material3:1.1.0-alpha03")
-    implementation ("androidx.appcompat:appcompat:1.5.1")
-    implementation ("com.google.android.material:material:1.7.0")
-    testImplementation ("junit:junit:4.13.2")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.4")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.0")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:$compose_version")
-    debugImplementation ("androidx.compose.ui:ui-tooling:$compose_version")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest:$compose_version")
 
-    implementation ("io.coil-kt:coil-compose:2.0.0-rc01")
+    implementation (Deps.core_ktx)
+    implementation (Deps.lifecycle_runtime_ktx )
+    implementation (Deps.activity_compose )
+    implementation (Deps.compose_ui )
+    implementation (Deps.ui_tooling_preview )
+    implementation (Deps.material3 )
+    implementation (Deps.appcompat )
+    implementation (Deps.material )
+    testImplementation (Deps.junit )
+    androidTestImplementation (Deps.androidx_test_ext )
+    androidTestImplementation (Deps.espresso_core )
+    androidTestImplementation (Deps.ui_test_junit4 )
+    debugImplementation (Deps.ui_tooling )
+    debugImplementation (Deps.ui_test_manifest )
+    implementation (Deps.coil_compose )
 
     //Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:2.44")
-    kapt ("com.google.dagger:hilt-android-compiler:2.44")
-    kapt ("androidx.hilt:hilt-compiler:1.0.0")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
+    implementation (Deps.hilt_android )
+    kapt (Deps.hilt_android_compiler )
+    kapt (Deps.hilt_compiler )
+    implementation (Deps.hilt_navigation_compose )
 
     // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
-    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+    implementation (Deps.retrofit2 )
+    implementation (Deps.converter_gson )
+    implementation (Deps.squareup_okhttp3 )
+    implementation (Deps.logging_interceptor )
 
     // Coroutine Lifecycle Scopes
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation (Deps.lifecycle_viewmodel_ktx )
+    implementation (Deps.lifecycle_runtime_ktx )
 
     // Coroutines
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation (Deps.kotlinx_coroutines_core )
+    implementation (Deps.kotlinx_coroutines_android )
 
     // Compose dependencies
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha03")
-    implementation ("androidx.navigation:navigation-compose:2.6.0-alpha04")
-    implementation ("com.google.accompanist:accompanist-flowlayout:0.17.0")
+    implementation (Deps.lifecycle_viewmodel_compose )
+    implementation (Deps.navigation_compose )
+    implementation (Deps.accompanist_flowlayout )
 }
 
 // Allow references to generated code
